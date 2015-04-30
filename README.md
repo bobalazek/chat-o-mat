@@ -2,6 +2,8 @@ README
 ======
 **Chat-O-Mat**
 
+An Open-Source Slack / HipChat alternative. Currently still in development.
+
 Requirements & Tools & Helpers
 -------------------
 * PHP > 5.3.9

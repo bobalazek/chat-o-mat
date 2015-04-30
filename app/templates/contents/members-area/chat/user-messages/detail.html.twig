@@ -1,0 +1,97 @@
+{% extends 'layouts/content/members-area/chat.html.twig' %}
+
+{% block title %}#{{ user }} | {{ 'Direct messages'|trans }} | {{ parent() }}{% endblock %}
+
+{% block main %}
+    <h1>
+        <span class="dropdown">
+            <a class="dropdown-toggle"
+                type="button" id="dropdown-menu"
+                data-toggle="dropdown" aria-expanded="true">
+                @{{ user }}
+            </a>
+        </span>
+    </h1>
+    <div id="chat-user">
+        <div id="chat-messages-wrapper" class="nano">
+            <div id="chat-messages-inner" class="nano-content">
+                    <button id="chat-messages-load-more-button"
+                        class="btn btn-block btn-lg btn-primary">
+                        {{ 'Load more' | trans }}
+                    </button>
+                {% if chatUserMessages | length == 0 %}
+                    <div id="chat-messages-no-messages-alert"
+                        class="alert alert-info">
+                        {{ 'members-area.chat.user-messages.noMessagesYetText' | trans }}
+                    </div>
+                {% endif %}
+                <div id="chat-messages">
+                    {% for chatMessage in chatUserMessages %}
+                        <div id="chat-message-{{ chatMessage.getId() }}"
+                            class="chat-message media {{ loop.index0 == 0 ? 'first' : '' }}"
+                            data-id="{{ chatMessage.getId() }}"
+                            data-user-id="{{ chatMessage.getUserFrom().getId() }}"
+                            data-time-created="{{ chatMessage.getTimeCreated() | date('U') }}">
+                            {% set chatMessageImage = chatMessage.getUserFrom() and chatMessage.getUserFrom().getProfile().getImageUrl()
+                                    ? chatMessage.getUserFrom().getProfile().getImageUrl()
+                                    : 'http://api.randomuser.me/portraits/lego/1.jpg'
+                            %}
+                            <div class="media-left">
+                                <a href="{{ url('members-area.chat.users.detail', { id : chatMessage.getUserFrom().getId() }) }}">
+                                    <img class="media-object max-width-48"
+                                        src="{{ chatMessageImage }}" />
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">
+                                    <div class="clearfix">
+                                        <div class="pull-left">
+                                            <a href="{{ url('members-area.chat.users.detail', { id : chatMessage.getUserFrom().getId() }) }}">
+                                                {{ chatMessage.getUserFrom()
+                                                    ? chatMessage.getUserFrom()
+                                                    : 'Anonnymous' | trans
+                                                }}
+                                            </a>
+                                            <small>
+                                                <time class="time-ago"
+                                                    datetime="{{ chatMessage.getTimeCreated() | date('c') }}"
+                                                    data-toggle="tooltip"
+                                                    title="{{ chatMessage.getTimeCreated() | date(app.dateTimeFormat) }}">
+                                                    {{ 'Unknown' | trans }}
+                                                </time>
+                                            </small>
+                                            {% if chatMessage.getTimeCreated() != chatMessage.getTimeUpdated() %}
+                                                <small data-toggle="tooltip"
+                                                    title="{{ chatMessage.getTimeUpdated() | date(app.dateTimeFormat) }}">
+                                                    ({{ 'edited' | trans }})
+                                                </small>
+                                            {% endif %}
+                                        </div> <!-- /.pull-left -->
+                                        <div class="pull-right">
+                                            {% if is_granted('EDIT', chatMessage) %}
+                                                <a class="btn btn-xs btn-default"
+                                                    href="{{ url('members-area.chat.channels.messages.edit', { id : chatMessage.getId() }) }}">
+                                                    <i class="fa fa-fw fa-cog"></i>
+                                                </a>
+                                            {% endif %}
+                                            {% if is_granted('REMOVE', chatMessage) %}
+                                                <a class="btn btn-xs btn-default"
+                                                    href="{{ url('members-area.chat.channels.messages.remove', { id : chatMessage.getId() }) }}">
+                                                    <i class="fa fa-fw fa-times"></i>
+                                                </a>
+                                            {% endif %}
+                                        </div> <!-- /.pull-right -->
+                                    </div> <!-- /.clearfix -->
+                                </h4>
+                                {{ chatMessage.getHtml(app) | raw }}
+                            </div>
+                        </div> <!-- /.chat-message -->
+                    {% endfor %}
+                </div>  <!-- /#chat-messages -->
+            </div> <!-- /#chat-messages-inner -->
+        </div> <!-- /#chat-messages-wrapper -->
+        <div id="chat-form-wrapper">
+            {{ form(form) }}
+        </div>
+    </div>
+{% endblock %}

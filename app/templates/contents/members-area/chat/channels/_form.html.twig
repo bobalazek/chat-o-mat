@@ -1,0 +1,27 @@
+{{ form_start(form) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.private) }}
+    <div id="chat-channel-form-users-wrapper"
+        style="display: {{ form.private.vars.checked == true ? 'block' : 'none' }};">
+        {{ form_row(form.users) }}
+    </div>
+{{ form_end(form) }}
+<script>
+    window.addEventListener(
+        'load',
+        function() {
+            jQuery('#chatChannel_private')
+                .on('click', function() {
+                    var isChecked = jQuery(this).is(':checked');
+
+                    if( isChecked ) {
+                        jQuery('#chat-channel-form-users-wrapper').slideDown();
+                    } else {
+                        jQuery('#chat-channel-form-users-wrapper').slideUp();
+                    }
+                })
+            ;
+        }
+    );
+</script>

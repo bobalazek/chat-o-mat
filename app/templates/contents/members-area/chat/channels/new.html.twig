@@ -1,0 +1,28 @@
+{% extends 'layouts/content/members-area/chat.html.twig' %}
+
+{% block title %}{{ 'New'|trans }} | {{ 'Channel'|trans }} | {{ parent() }}{% endblock %}
+
+{% block main %}
+    <h1>{{ 'New Channel'|trans }}</h1>
+    <ol class="breadcrumb">
+        <li>
+            <a href="{{ url('members-area') }}">
+                {{ 'Home' | trans }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ url('members-area.chat') }}">
+                {{ 'Chat' | trans }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ url('members-area.chat.channels') }}">
+                {{ 'Channels' | trans }}
+            </a>
+        </li>
+        <li class="active">
+            {{ 'New' | trans }}
+        </li>
+    </ol>
+    {% include 'contents/members-area/chat/channels/_form.html.twig' %}
+{% endblock %}

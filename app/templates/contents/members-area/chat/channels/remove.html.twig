@@ -1,0 +1,46 @@
+{% extends 'layouts/content/members-area/chat.html.twig' %}
+
+{% block title %}{{ 'Remove'|trans }} | {{ 'Channels'|trans }} | {{ parent() }}{% endblock %}
+
+{% block main %}
+    <h1>{{ 'Remove Channel'|trans }}</h1>
+    <ol class="breadcrumb">
+        <li>
+            <a href="{{ url('members-area') }}">
+                {{ 'Home' | trans }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ url('members-area.chat') }}">
+                {{ 'Chat' | trans }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ url('members-area.chat.channels') }}">
+                {{ 'Channels' | trans }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ url('members-area.chat.channels.detail', { id : chatChannel.getId() }) }}">
+                #{{ chatChannel }}
+            </a>
+        </li>
+        <li class="active">
+            {{ 'Remove' | trans }}
+        </li>
+    </ol>
+    <div class="alert alert-block alert-warning">
+        <h4 class="alert-heading">{{ 'Warning!'|trans }}</h4>
+        <p>{{ 'Are you sure you want to remove this channel?'|trans }}</p>
+        <p>
+            <a class="btn btn-danger"
+                href="{{ url('members-area.chat.channels.remove', { id : chatChannel.getId() }) }}?action=confirm">
+                {{ 'Confirm'|trans }}
+            </a>
+            <a class="btn btn-success"
+                href="{{ url('members-area.chat.channels') }}">
+                {{ 'Cancel'|trans }}
+            </a>
+        </p>
+    </div>
+{% endblock %}

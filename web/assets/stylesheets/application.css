@@ -1,0 +1,299 @@
+/****************************************************
+ * Company: Corcosoft
+ * Author: Borut Balazek <bobalazek124@gmail.com>
+ * Verison: 1.0
+ ****************************************************/
+
+/********** Imports (fonts) **********/
+/* Google Fonts and stuff */
+
+/********** General **********/
+#html {}
+
+	#body {}
+
+		#application {}
+
+/* Links */
+a {}
+
+a:focus,
+a:hover {
+	text-decoration: none;
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {}
+
+/********** Warnings **********/
+#warnings {
+	position: fixed;
+	top: 0;
+	right: 0;
+	max-width: 360px;
+	display: none;
+}
+
+	#warnings .warning {
+		padding: 8px;
+		margin-bottom: 8px;
+		z-index: 9999;
+		background-color: #FCD116;
+		color: #6B5702;
+		text-align: justify;
+		display: none;
+	}
+
+	#warnings .warning.active {
+		display: block;
+	}
+
+	/***** Noscript *****/
+	#noscript-warning {}
+
+	/***** Old IE Warning *****/
+	#old-ie-warning {}
+
+	/***** Flash Messages *****/
+	#flash-messages {
+		position: fixed;
+		top: 50px;
+		left: 0;
+		right: 0;
+		z-index: 9999;
+		padding: 15px 15px 0;
+	}
+
+	#flash-messages .alert {
+		opacity: 0.9;
+	}
+
+		#flash-messages .alert:last-child {
+			margin-bottom: 0;
+		}
+
+/********** Preloader **********/
+#preloader {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 99999999;
+	font-size: 32px;
+	text-align: center;
+	background-color: #fff;
+	background-position: center 100px;
+	background-repeat: no-repeat;
+	background-size: 256px 256px;
+	/* background-image: url('../images/logo/icon.png'); */
+	padding-top: 20px;
+	color: #000;
+}
+
+/********** Wrapper **********/
+#wrapper {
+	padding: 50px 0 39px;
+}
+
+	#header {
+		position: fixed;
+		left: 0;
+		right: 0;
+		top: 0;
+		z-index: 99999;
+	}
+
+		#primary-navigation {
+			margin: 0;
+		}
+
+	#content {
+		padding: 20px 0;
+	}
+
+	.chat-layout #content {
+		padding: 0;
+	}
+
+		#sidebar {}
+
+			#sidebar .nav > li > a {
+				padding-top: 5px;
+				padding-bottom: 5px;
+			}
+
+	/*** Chat ***/
+	#chat-sidebar,
+	#chat-content {
+		position: relative;
+	}
+
+	#chat-sidebar-inner,
+	#chat-messages-inner {
+		padding: 30px 15px 30px 0;
+	}
+
+	#chat-content-inner {
+		padding-top: 20px;
+	}
+
+	#chat-content h1,
+	#chat-sidebar h3 {
+		margin-top: 0;
+	}
+
+	#chat-messages-wrapper {
+		-moz-box-shadow:    inset  0  8px 8px -8px #696868,
+	                        inset  0 -8px 8px -8px #696868;
+	    -webkit-box-shadow: inset  0  8px 8px -8px #696868,
+	                        inset  0 -8px 8px -8px #696868;
+	     box-shadow:        inset  0  8px 8px -8px #696868,
+	                        inset  0 -8px 8px -8px #696868;
+	}
+
+	#chat-form-wrapper {
+		position: fixed;
+		bottom: 0;
+		right: 0;
+		/* left: 0; */
+		width: 75%;
+		padding: 15px 15px 55px;
+		background-color: #fff;
+	}
+
+	#chat-messages-load-more-button {
+		margin: 20px 0;
+	}
+
+	.emoji-icon {
+		display: inline-block;
+		font-size: 24px;
+		line-height: 1em;
+		vertical-align: bottom;
+		width: 1em;
+		height: 1em;
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: 50% 50%;
+	}
+
+		/*** Application information ***/
+		#application-information {
+			display: none;
+			margin-bottom: 10px;
+		}
+
+		#application-information-button {
+			outline: none;
+			margin-bottom: 10px;
+		}
+
+	#footer {
+		font-size: 13px;
+		position: fixed;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: #f8f8f8;
+		border-top: 1px solid #e7e7e7;
+		padding: 10px;
+		z-index: 99999;
+	}
+
+	#back-to-top {
+		position: fixed;
+		bottom: 20px;
+		right: 20px;
+		z-index: 99999;
+		cursor: pointer;
+	}
+
+	/***** Other *****/
+	.nav-sub {
+		margin: 5px 0 5px 30px;
+	}
+
+	.divider-top {
+		border-top: 3px solid #666;
+	}
+
+	.navigation-list {
+		margin-bottom: 0;
+	}
+
+/********** Fixes **********/
+.navbar-brand {
+		line-height: 26px;
+		font-size: 22px;
+}
+
+	.navbar-default .navbar-brand {
+		padding: 9px;
+	}
+
+	.navbar-brand > img {
+		float: left;
+		margin-right: 5px;
+	}
+
+	.navbar-brand > div {
+		padding: 3px 0;
+	}
+
+a.dropdown-toggle {
+	color: #333;
+	cursor: pointer;
+}
+
+a.dropdown-toggle:hover {
+	color: #555;
+}
+
+.nano-content {
+	outline: none !important;
+}
+
+.nano-pane {
+	z-index: 99999999999;
+}
+
+.textcomplete-dropdown a {
+	cursor: pointer;
+}
+
+.textcomplete-dropdown li {
+	display: inline-block;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+/********** Media Queries (from Bootstrap) **********/
+/* Extra small devices (phones, up to 480px) */
+/* No media query since this is the default in Bootstrap */
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+}
+
+/********** Retina **********/
+.is-retina #preloader {
+	background-size: 196px 196px;
+}

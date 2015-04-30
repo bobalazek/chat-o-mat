@@ -1,0 +1,31 @@
+{% extends 'layouts/content/members-area.html.twig' %}
+
+{% block title %}{{ 'Edit'|trans }} | {{ 'Emojis'|trans }} | {{ parent() }}{% endblock %}
+
+{% block main %}
+	<h1>
+		{{ 'Edit Emoji'|trans }}
+		<a class="btn btn-primary btn-sm"
+            href="{{ url('members-area.emojis.new') }}">
+            {{ 'New'|trans }}
+        </a>
+		<br />
+		<small>{{ emoji }}</small>
+	</h1>
+	<ol class="breadcrumb">
+		<li>
+			<a href="{{ url('members-area') }}">
+				{{ 'Home' | trans }}
+			</a>
+		</li>
+		<li>
+			<a href="{{ url('members-area.emojis') }}">
+				{{ 'Emojis' | trans }}
+			</a>
+		</li>
+		<li class="active">
+			{{ 'Edit' | trans }}
+		</li>
+	</ol>
+	{% include 'contents/members-area/emojis/_form.html.twig' %}
+{% endblock %}

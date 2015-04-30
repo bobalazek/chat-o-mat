@@ -1,0 +1,137 @@
+{% extends 'layouts/content/default.html.twig' %}
+
+{% block title %}{{ 'Chat'|trans }} | {{ 'Members area'|trans }} | {{ parent() }}{% endblock %}
+
+{% set users = app['orm.em'].getRepository('Application\\Entity\\UserEntity').findAll() %}
+{% set chatChannels = app['orm.em'].getRepository('Application\\Entity\\ChatChannelEntity').findBy({
+    private : false
+}, {
+    'name' : 'ASC',
+}) %}
+{% set privateChatChannels = app.user.getChatChannels() %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-md-4">
+                <div id="chat-sidebar" class="nano">
+                    <div id="chat-sidebar-inner" class="nano-content">
+                        <h3>
+                            {{ 'Channels' | trans }}
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <a class="btn btn-xs btn-primary"
+                                    href="{{ url('members-area.chat.channels.new') }}">
+                                    {{ 'New' | trans }}
+                                </a>
+                            {% endif %}
+                        </h3>
+                        {% if chatChannels %}
+                            <div class="list-group">
+                                {% for chatChannel in chatChannels %}
+                                    <a class="list-group-item {{ path('members-area.chat.channels.detail', { id : chatChannel.getId() }) in app.currentUrl ? 'active' : '' }}"
+                                        href="{{ url('members-area.chat.channels.detail', { id : chatChannel.getId() }) }}"
+                                        data-channel="{{ chatChannel }}">
+                                        <h4 class="list-group-item-heading">
+                                            #{{ chatChannel }}
+                                        </h3>
+                                        {% if chatChannel.getDescription() %}
+                                            <p class="list-group-item-text">
+                                                {{ chatChannel.getDescription() }}
+                                            </p>
+                                        {% endif %}
+                                    </a>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <div class="alert alert-info">
+                                {{ 'members-area.chat.noChannelsYetText' }}
+                            </div>
+                        {% endif %}
+                        <hr />
+                        {% if privateChatChannels %}
+                            <h3>{{ 'Private Channels' | trans }}</h3>
+                            {% if privateChatChannels %}
+                                <div class="list-group">
+                                    {% for chatChannel in privateChatChannels %}
+                                        <a class="list-group-item {{ path('members-area.chat.channels.detail', { id : chatChannel.getId() }) in app.currentUrl ? 'active' : '' }}"
+                                            href="{{ url('members-area.chat.channels.detail', { id : chatChannel.getId() }) }}"
+                                            data-channel="{{ chatChannel }}">
+                                            <h4 class="list-group-item-heading">
+                                                #{{ chatChannel }}
+                                            </h3>
+                                            {% if chatChannel.getDescription() %}
+                                                <p class="list-group-item-text">
+                                                    {{ chatChannel.getDescription() }}
+                                                </p>
+                                            {% endif %}
+                                        </a>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            <hr />
+                        {% endif %}
+                        <div id="chat-sidebar-users">
+                            <h3>
+                                {{ 'Users' | trans }}
+                                <a class="btn btn-xs btn-primary"
+                                    href="{{ url('members-area.users.new') }}">
+                                    {{ 'New' | trans }}
+                                </a>
+                            </h3>
+                            {% for user in users %}
+                                <div class="media">
+                                    {% set userImageUrl = user.getProfile().getImageUrl()
+                                        ? user.getProfile().getImageUrl()
+                                        : 'http://api.randomuser.me/portraits/lego/1.jpg'
+                                    %}
+                                        <div class="media-left">
+                                            <a href="{{ url('members-area.chat.user-messages.detail', { id : user.getId() }) }}">
+                                                <img class="media-object" alt="{{ user }}"
+                                                    src="{{ userImageUrl }}"
+                                                    style="max-width: 48px;" />
+                                            </a>
+                                        </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading clearfix">
+                                            <a href="{{ url('members-area.chat.user-messages.detail', { id : user.getId() }) }}">
+                                                @{{ user }}
+                                            </a>
+                                                <small class="pull-right"
+                                                    style="margin-right: 15px;">
+                                                    {% if user.getTimeLastActive() %}
+                                                        {# (<time class="time-ago"
+                                                            datetime="{{ user.getTimeLastActive() | date('c') }}"
+                                                            data-toggle="tooltip"
+                                                            title="{{ 'Last active' | trans }}: {{ user.getTimeLastActive() | date(app.dateTimeFormat) }}">
+                                                            {{ 'Unknown' | trans }}
+                                                        </time>) #}
+                                                        <i class="fa fa-circle"
+                                                            data-toggle="tooltip"
+                                                            title="{{ 'Last active' | trans }}: {{ user.getTimeLastActive() | date(app.dateTimeFormat) }}"
+                                                            style="{{ date(user.getTimeLastActive()) > date('-1 minute') ? 'color: green;' : '' }}"></i>
+                                                    {% else %}
+                                                        <i class="fa fa-circle"
+                                                            data-toggle="tooltip"
+                                                            title="{{ 'Not active yet!' }}"></i>
+                                                    {% endif %}
+                                                </small>
+
+                                        </h4>
+                                        {{ user.getProfile().getFullName() }}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div> <!-- /#chat-sidebar-inner -->
+                </div> <!-- /#chat-sidebar -->
+            </div>
+            <div class="col-lg-9 col-md-8">
+                <div id="chat-content">
+                    <div id="chat-content-inner">
+                        {% block main %}{% endblock %}
+                    </div>
+                </div> <!-- /#chat-main -->
+            </div>
+        </div>
+    </div> <!-- /.container-fluid -->
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'layouts/content/members-area/chat.html.twig' %}
+
+{% block title %}{{ 'Edit Message'|trans }} | {{ parent() }}{% endblock %}
+
+{% block main %}
+    <h1>{{ 'Edit Message'|trans }}</h1>
+    <ol class="breadcrumb">
+        <li>
+            <a href="{{ url('members-area') }}">
+                {{ 'Home' | trans }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ url('members-area.chat') }}">
+                {{ 'Chat' | trans }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ url('members-area.chat.channels') }}">
+                {{ 'Channels' | trans }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ url('members-area.chat.channels.detail', { id : chatChannelMessage.getChatChannel().getId() }) }}">
+                #{{ chatChannelMessage.getChatChannel() }}
+            </a>
+        </li>
+        <li class="active">
+            {{ 'Edit Message' | trans }}
+        </li>
+    </ol>
+    {{ form(form) }}
+{% endblock %}

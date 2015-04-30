@@ -1,0 +1,20 @@
+{% extends 'layouts/content/members-area.html.twig' %}
+
+{% block title %}{{ 'Integrations'|trans }} | {{ parent() }}{% endblock %}
+
+{% block main %}
+    <h1>{{ 'Integrations'|trans }}</h1>
+    <ol class="breadcrumb">
+        <li>
+            <a href="{{ url('members-area') }}">
+                {{ 'Home' | trans }}
+            </a>
+        </li>
+        <li class="active">
+            {{ 'Integrations' | trans }}
+        </li>
+    </ol>
+    <div id="main-content">
+        {{ 'Soon!' | trans }}
+    </div>
+{% endblock %}

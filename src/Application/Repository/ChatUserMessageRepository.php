@@ -40,9 +40,9 @@ class ChatUserMessageRepository
             )
         ;
 
-        if( $type == 'after') {
+        if ($type == 'after') {
             $qb->andWhere('cum.timeCreated >= :datetime');
-        } elseif( $type == 'before' ) {
+        } elseif ($type == 'before') {
             $qb->andWhere('cum.timeCreated <= :datetime');
         }
 

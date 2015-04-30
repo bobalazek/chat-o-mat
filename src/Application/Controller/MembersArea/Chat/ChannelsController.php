@@ -146,9 +146,9 @@ class ChannelsController
         $type = 'after'; // before or after
         $datetime = new \DateTime('- 12 hours');
 
-        if($after) {
+        if ($after) {
             $datetime = new \DateTime(date('Y-m-d H:i:s', $after));
-        } elseif( $before ) {
+        } elseif ($before) {
             $type = 'before';
             $datetime = new \DateTime(date('Y-m-d H:i:s', $before));
         }

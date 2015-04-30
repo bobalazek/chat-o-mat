@@ -33,9 +33,9 @@ class ChatChannelMessageRepository
             ->where('ccm.chatChannel = :chatChannel')
         ;
 
-        if( $type == 'after') {
+        if ($type == 'after') {
             $qb->andWhere('ccm.timeCreated >= :datetime');
-        } elseif( $type == 'before' ) {
+        } elseif ($type == 'before') {
             $datetimeNextBefore = clone $datetime;
             $datetimeNextBefore->modify('-12 hours');
 
@@ -50,7 +50,6 @@ class ChatChannelMessageRepository
             ->setParameter('chatChannel', $chatChannel)
             ->setParameter('datetime', $datetime)
         ;
-
 
         return $qb
             ->getQuery()

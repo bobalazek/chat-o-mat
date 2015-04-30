@@ -32,7 +32,7 @@ Database
 Commands
 --------------------
 * `bin/console application:environment:prepare` - Will create the global-local.php and development-local.php files (if not existent)
-* `bin/console application:database:hydrate-data --remove-existing-data` - Will hydrate the tables with some basic data, like: 235+ countries, 2 users, 10+ roles, 1 group and 1 badge (the `--remove-existing-data` flag will truncate all tables before re-hydrating them)
+* `bin/console application:database:hydrate-data --remove-existing-data` - Will hydrate the tables with some basic data, like: 4 chat channels, 2 users and 50 emojis (the `--remove-existing-data` flag will truncate all tables before re-hydrating them)
 * `bin/console application:storage:prepare` - Will prepare all the storage (var/) folders, like: cache, logs, sessions, etc.
 * `bin/console application:storage:prepare-shared-folders` - Will prepare shared folders for your server / deployment (you can set the shared folders inside the app/configs/global.php file)
 

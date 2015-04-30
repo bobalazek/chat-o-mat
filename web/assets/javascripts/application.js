@@ -259,7 +259,8 @@ var Application = function () {
 				before = moment(currentDateMinus12Hours).unix();
 
 				jQuery('#chat-messages-wrapper').on('scrolltop', function() {
-					fetchNewMessages('before', before);
+					// Tmp disable, until we have a solution
+					// fetchNewMessages('before', before);
 				});
 
 				jQuery('#chat-messages-load-more-button').on('click', function() {

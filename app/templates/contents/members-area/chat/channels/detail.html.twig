@@ -32,8 +32,12 @@
     <div id="chat-channel">
         <div id="chat-messages-wrapper" class="nano">
             <div id="chat-messages-inner" class="nano-content">
+                {#
+                    Hide it temporarily, until we find a better solution for
+                    the pagination problem
+                #}
                 <button id="chat-messages-load-more-button"
-                    class="btn btn-block btn-lg btn-primary">
+                    class="btn btn-block btn-lg btn-primary hidden">
                     {{ 'Load more' | trans }}
                 </button>
                 {% if chatChannelMessages | length == 0 %}

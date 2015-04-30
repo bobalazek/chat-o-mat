@@ -155,9 +155,22 @@ class ChannelsController
         // By Datetime /END
 
         // if($before || $after) {
-            $chatChannelMessages = $app['orm.em']
+            /* $chatChannelMessages = $app['orm.em']
                 ->getRepository('Application\Entity\ChatChannelMessageEntity')
                 ->getByChatChannelDatetime( $chatChannel, $type, $datetime)
+            ; */
+            // To-Do: Temp solution is to show all.
+            //   Need to fix the pagination first
+            $chatChannelMessages = $app['orm.em']
+                ->getRepository('Application\Entity\ChatChannelMessageEntity')
+                ->findBy(
+                    array(
+                        'chatChannel' => $chatChannel,
+                    ),
+                    array(
+                        'timeCreated' => 'ASC',
+                    )
+                )
             ;
         /* } else {
             $chatChannelMessages = $app['orm.em']

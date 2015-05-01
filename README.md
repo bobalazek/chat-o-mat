@@ -27,8 +27,8 @@ Database
 -------------------
 * We use the Doctrine database
 * Navigate to your project directory: `cd /var/www/chat-o-mat`
-* Check the entities: `php bin/console orm:info` (optional)
-* Update the schema: `php bin/console orm:schema-tool:update --force --dump-sql`
+* Check the entities: `bin/console orm:info` (optional)
+* Update the schema: `bin/console orm:schema-tool:update --force --dump-sql`
 * Database updated!
 
 Commands

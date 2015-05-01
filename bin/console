@@ -38,11 +38,7 @@ $consoleApp->setHelperSet($doctrineHelperSet);
 /***** Prepare *****/
 $consoleApp
     ->add(
-        new \Application\Command\Storage\PrepareCommand(
-            'application:storage:prepare',
-            $app,
-            $consoleApp
-        )
+        new \Application\Command\Storage\PrepareCommand()
     )
 ;
 
@@ -50,11 +46,7 @@ $consoleApp
 /***** Prepare *****/
 $consoleApp
     ->add(
-        new \Application\Command\Environment\PrepareCommand(
-            'application:environment:prepare',
-            $app,
-            $consoleApp
-        )
+        new \Application\Command\Environment\PrepareCommand()
     )
 ;
 
@@ -64,8 +56,7 @@ $consoleApp
     ->add(
         new \Application\Command\Database\HydrateDataCommand(
             'application:database:hydrate-data',
-            $app,
-            $consoleApp
+            $app
         )
     )
 ;

@@ -2,14 +2,15 @@
 
 return array(
     'baseUrl' => 'http://projects.dev/chat-o-mat',
-    // Swiftmailer options
-    'swiftmailerOptions' => array(
-        'host' => 'corcosoft.com',
-        'port' => 465,
-        'username' => 'info@corcosoft.com',
-        'password' => '',
-        'encryption' => 'ssl',
-        'auth_mode' => null,
+    // Database / Doctrine options
+    'databaseOptions' => array(
+        'default' => array(
+            'driver' => 'pdo_mysql',
+            'host' => 'localhost',
+            'dbname' => 'chat_with_me',
+            'user' => 'chat_with_me',
+            'password' => 'chat_with_me',
+            'charset' => 'utf8',
+        ),
     ),
-
 );

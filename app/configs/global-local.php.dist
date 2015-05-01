@@ -2,6 +2,7 @@
 
 return array(
     'baseUrl' => 'http://projects.dev/chat-o-mat',
+    
     // Database / Doctrine options
     'databaseOptions' => array(
         'default' => array(

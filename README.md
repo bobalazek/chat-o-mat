@@ -18,8 +18,8 @@ Setup / Development
 * Configure database (and maybe other stuff if you want): `app/configs/global-local.php` (just rename the global-local.php.dist and set your own configuration)
 * Run the following commands:
     * `curl -sS https://getcomposer.org/installer | php -- --install-dir=bin` (skip this step, if you already have composer installed - globally)
-    * `php bin/composer.phar install`
-    * `php bin/console orm:schema-tool:update --force --dump-sql` (to install the database schema)
+    * `bin/composer.phar install`
+    * `bin/console orm:schema-tool:update --force --dump-sql` (to install the database schema)
     * `bower update` (to install the frontend dependencies - you need to install [Bower](http://bower.io/) first - if you haven't already)
 * You are done! Start chatting / developing!
 

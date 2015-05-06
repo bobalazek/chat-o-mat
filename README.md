@@ -42,6 +42,24 @@ Other commands
 ----------------------
 * `sudo php-cs-fixer fix .` - if you want your code fixed before each commit. You will need to install [PHP Coding Standards Fixer](http://cs.sensiolabs.org/)
 
+Preview
+----------------------
+
+### Chat Channel detail ###
+![Chat Channel detail preview](doc/assets/images/chat-channel-detail-preview.png)
+
+### Chat Channel detail - Channels autocomplete ###
+![Chat Channel detail - Channels autocomplete preview](doc/assets/images/chat-channel-detail-channels-autocomplete-preview.png)
+
+### Chat Channel detail - Emojis autocomplete ###
+![Chat Channel detail - Emojis autocomplete preview](doc/assets/images/chat-channel-detail-emojis-autocomplete-preview.png)
+
+### Chat Channel detail - Users autocomplete ###
+![Chat Channel detail - Users autocomplete preview](doc/assets/images/chat-channel-detail-users-autocomplete-preview.png)
+
+### Members Area - Users ###
+![Members Area - Users preview](doc/assets/images/members-area-users-preview.png)
+
 Credits
 ----------------------
 Icons - [Hawcons Emoji](http://www.flaticon.com/packs/hawcons-emoji-filled)

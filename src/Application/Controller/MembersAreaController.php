@@ -28,11 +28,11 @@ class MembersAreaController
 
     public function loginAction(Request $request, Application $app)
     {
-        $data = array();
-
-        $data['lastUsername'] = $app['session']->get('_security.last_username');
-        $data['lastError'] = $app['security.last_error']($app['request']);
-        $data['csrfToken'] = $app['form.csrf_provider']->generateCsrfToken('authenticate'); // The intention MUST be "authenticate"
+        $data = array(
+            'lastUsername' => $app['session']->get('_security.last_username'),
+            'lastError' => $app['security.last_error']($app['request']),
+            'csrfToken' => $app['form.csrf_provider']->getToken('authenticate'), // The intention MUST be "authenticate"
+        );
 
         return new Response(
             $app['twig']->render(

@@ -7,9 +7,9 @@ An Open-Source Slack / HipChat alternative. Currently still in development.
 Requirements & Tools & Helpers
 -------------------
 * PHP > 5.3.9
-* [Composer](https://getcomposer.org/) *
-* [Bower](http://bower.io/) *
-* [PHP Coding Standards Fixer](http://cs.sensiolabs.org/)
+* [Composer](https://getcomposer.org/)
+* [Bower](http://bower.io/)
+* [PHP Coding Standards Fixer](http://cs.sensiolabs.org/) (optional)
 
 Setup / Development
 -------------------
